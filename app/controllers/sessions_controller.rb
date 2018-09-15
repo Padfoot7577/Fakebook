@@ -2,9 +2,7 @@
 
 class SessionsController < ApplicationController
   def new
-    if logged_in?
-      return redirect_to '/'
-    end
+    redirect_to '/' if logged_in?
   end
 
   def create
@@ -19,5 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out
+    redirect_to '/'
   end
 end
