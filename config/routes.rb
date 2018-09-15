@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   get 'home/index' => 'home#index'
 
+  get  '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
+  resources :users
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'

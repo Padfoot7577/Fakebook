@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
-  root: {
+  body: {
     marginLeft: 100,
     marginRight: 100
   },
@@ -16,7 +16,7 @@ const styles = {
     height: 300,
     width: 240
   },
-  titleLine: {
+  subtitleLine: {
     margin: 10,
     fontFamily: "Helvetica",
     fontSize: 24,
@@ -31,14 +31,16 @@ class GreetUser extends React.Component {
 
   render () {
     return (
-      <div className={this.props.classes.root}>
-        <h1>User's Name is {this.props.user.name} </h1>
-        <div className={this.props.classes.titleLine}>Things that you might hate</div>
-        <div>
-          {this.props.user.hateObjects.map((hateObject) => (
-            <Card key={hateObject.id} className={this.props.classes.card}>
-            <div className={this.props.classes.cardContent}>{hateObject.name}
-            </div></Card>))}
+      <div>
+        <div className={this.props.classes.body}>
+          <h1>User's Name is {this.props.user.name} </h1>
+          <div className={this.props.classes.subtitleLine}>Things that you might hate</div>
+          <div>
+            {this.props.user.hateObjects.map((hateObject) => (
+              <Card key={hateObject.id} className={this.props.classes.card}>
+              <div className={this.props.classes.cardContent}>{hateObject.name}
+              </div></Card>))}
+          </div>
         </div>
       </div>
     );
