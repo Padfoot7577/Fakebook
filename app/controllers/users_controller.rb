@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
     if @user.save
+      log_in @user
       flash[:success] = "Why are you on Fakebook?"
       redirect_to @user
     else
