@@ -40,16 +40,8 @@ class User < ActiveRecord::Base
   def for_api
     {
       :id => id,
-      :content_type => content_type,
-      :authored_by_agent_id => authored_by_agent_id,
-      :body => body,
-      :body_format => body_format,
-      :title => title,
-      :url_slug => url_slug,
-      :published_at => published_at,
-      :author_name => author_name,
-      :tags => api_tags,
-      :assets => api_assets
+      :email => email,
+      :name => name,
     }
   end
 end
