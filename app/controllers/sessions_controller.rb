@@ -2,6 +2,9 @@
 
 class SessionsController < ApplicationController
   def new
+    if logged_in?
+      return redirect_to '/'
+    end
   end
 
   def create

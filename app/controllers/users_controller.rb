@@ -2,6 +2,9 @@
 
 class UsersController < ApplicationController
   def new
+    if logged_in?
+      return redirect_to '/'
+    end
     @user = User.new
   end
 
