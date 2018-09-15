@@ -6,16 +6,16 @@
     <%= form_for(@user, url: signup_path) do |f| %>
       <%= render 'shared/error_messages' %>
       <h1></h1>
-      <%= f.label :name %>
+      <%= f.label :name %> <br />
       <%= f.text_field :name, class: 'form-control' %>
       <h1></h1>
-      <%= f.label :email %>
+      <%= f.label :email %> <br />
       <%= f.email_field :email, class: 'form-control' %>
       <h1></h1>
-      <%= f.label :password %>
+      <%= f.label :password %> <br />
       <%= f.password_field :password, class: 'form-control' %>
       <h1></h1>
-      <%= f.label :password_confirmation, "Confirm your password" %>
+      <%= f.label :password_confirmation, "Confirm your password" %> <br />
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       <h1></h1>
       <%= f.submit "Create my account", class: "btn btn-primary" %>
