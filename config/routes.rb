@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   get 'home/index' => 'home#index'
 
-  get  '/signup',  to: 'users#new'
-  post '/signup',  to: 'users#create'
+  get  '/signup' => 'users#new'
+  post '/signup' => 'users#create'
   resources :users
 
   get '/login' => 'sessions#new'
