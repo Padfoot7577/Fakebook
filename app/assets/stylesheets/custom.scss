@@ -2,6 +2,11 @@
 
 $gray-medium-light: #eaeaea;
 
+div {
+  color: black;
+  text-align: center;
+}
+
 @mixin box_sizing {
   -moz-box-sizing:     border-box;
   -webkit-box-sizing:  border-box;
@@ -13,7 +18,6 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 60%;
   margin-bottom: 10px;
-  text-align:center;
   @include  box_sizing;
 }
 
