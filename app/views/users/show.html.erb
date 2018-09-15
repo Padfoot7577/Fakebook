@@ -1,0 +1,5 @@
+<% provide(:title, @user.name) %>
+<h1>
+  <%= image_tag(@user.get_gravatar_link, alt: @user.name, class: "gravatar") %>
+  <%= @user.name %>
+</h1>
