@@ -38,3 +38,8 @@ input, textarea, select, .uneditable-input {
   border-radius: 10px;
   @include  box_sizing;
 }
+
+input {
+  height: 35px;
+  font-family: "Helvetica Neue"
+}
