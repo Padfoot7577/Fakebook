@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
       :id => id,
       :email => email,
       :name => name,
+      :gravatar_link => get_gravatar_link,
     }
   end
 end
