@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= react_component 'Header' %>
+    <%= react_component 'Header', current_user&.for_api %>
     <% flash.each do |message_type, message| %>
 <!--      <div class="alert alert-<%#= message_type %>"><%#= message %></div>-->
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
