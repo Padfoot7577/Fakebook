@@ -36,11 +36,11 @@ input, textarea, select, .uneditable-input {
   width: 50%;
   margin-bottom: 20px;
   border-radius: 10px;
-  padding: 2px;
+  padding: 5px;
   @include  box_sizing;
 }
 
 input {
-  font-size: 20pt;
+  font-size: 18pt;
   font-family: "Helvetica Neue"
 }
