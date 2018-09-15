@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
 
 const styles = {
   head: {
@@ -25,6 +26,7 @@ class Header extends React.Component {
   render () {
     return (
       <div className={this.props.classes.head}>
+        <Icon>thumb_down</Icon>
         <div className={this.props.classes.headTitle}>Fakebook</div>
       </div>
     );
