@@ -33,3 +33,4 @@ yarn-debug.log*
 
 # Ignore the idea file created by rubymine
 .idea/
+.idea/workspace.xml
