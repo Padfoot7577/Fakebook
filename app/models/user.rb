@@ -32,4 +32,17 @@ class User < ActiveRecord::Base
     self.email = email.downcase
   end
 
+  def get_gravatar_link
+    gravatar_id = Digest::MD5::hexdigest(self.email)
+    "https://secure.gravatar.com/avatar/#{gravatar_id}"
+  end
+
+  def for_api
+    {
+      :id => id,
+      :email => email,
+      :name => name,
+      :gravatar_link => get_gravatar_link,
+    }
+  end
 end
