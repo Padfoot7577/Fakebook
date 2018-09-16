@@ -133,7 +133,9 @@ class GreetUser extends React.Component {
 
         </div>
         {
-          this.state.creatingNew && <AddAbominationForm toggleOpen={this.toggleCreatingNew}/>
+          this.state.creatingNew && <AddAbominationForm toggleOpen={this.toggleCreatingNew}
+                                                        defaultValue={this.state.searchedString}
+          />
         }
 
       </div>

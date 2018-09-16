@@ -40,6 +40,7 @@ class AddAbominationForm extends React.Component {
               id="name"
               label="Name"
               type="name"
+              defaultValue={this.props.defaultValue}
               fullWidth
             />
           </DialogContent>
