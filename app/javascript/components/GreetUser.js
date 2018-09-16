@@ -74,6 +74,7 @@ const styles = {
 class GreetUser extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {searchedString: ""}
   };
 
@@ -103,10 +104,10 @@ class GreetUser extends React.Component {
         <div className={this.props.classes.body}>
           <div className={this.props.classes.subtitleLine}>Things that you might hate</div>
           <div>
-            {this.props.user.hateObjects
-              .filter(hateObject => containsSequence(hateObject.name, this.state.searchedString))
-              .map((hateObject) => (
-                  <SelfDefinedCard key={hateObject.id} name={hateObject.name}/>
+            {this.props.all_abominations
+              .filter(abomination => containsSequence(abomination.name, this.state.searchedString))
+              .map((abomination) => (
+                  <SelfDefinedCard key={abomination.id} name={abomination.name} url={abomination.url}/>
               ))
             }
 
