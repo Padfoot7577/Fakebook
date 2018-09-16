@@ -30,7 +30,7 @@ class SelfDefinedCard extends React.Component {
     return (
       <Card className={this.props.classes.card} key={this.props.key}>
         <img className={this.props.classes.cardImage}
-             src="https://i.kym-cdn.com/entries/icons/original/000/002/232/bullet_cat.jpg" />
+             src={this.props.url} />
         <div className={this.props.classes.cardContent}>{this.props.name}</div>
       </Card>
     )
