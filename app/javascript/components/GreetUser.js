@@ -76,10 +76,21 @@ class GreetUser extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
-    this.state = {searchedString: "",
-      creatingNew: false
+    this.state = {
+      searchedString: "",
+      creatingNew: false,
+      all_abominations: this.props.all_abominations,
     };
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.all_abominations !== this.state.all_abominations) {
+      this.setState({
+        all_abominations: nextProps.all_abominations ,
+        searchedString: "",
+      });
+    }
+  }
 
   setSearchString = (event) => {
     this.setState ({searchedString: event.target.value});
@@ -111,7 +122,7 @@ class GreetUser extends React.Component {
         <div className={this.props.classes.body}>
           <div className={this.props.classes.subtitleLine}>Things that you might hate</div>
           <div>
-            {this.props.all_abominations
+            {this.state.all_abominations
               .filter(abomination => containsSequence(abomination.name, this.state.searchedString))
               .map((abomination) => (
                   <SelfDefinedCard key={abomination.id}
