@@ -65,7 +65,8 @@ const styles = {
     paddingRight: 5,
     paddingBottom: 5,
     paddingLeft: 50,
-    width: '100%'
+    width: '100%',
+    height: 30
   },
   addButton: {
     background:'#e0e2e5',
