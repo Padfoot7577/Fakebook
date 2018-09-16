@@ -30,13 +30,17 @@ const styles = {
     margin: 10,
     fontFamily: "Helvetica Neue",
     fontSize: 18
+  },
+  logoutButton: {
+    background: "#3B5998",
+    display: "block",
+    margin: 30,
   }
 };
 
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
   };
 
   render () {
@@ -48,9 +52,15 @@ class UserProfile extends React.Component {
             <div className={this.props.classes.secondaryInfo}>User id:  {this.props.id} </div>
             <div className={this.props.classes.secondaryInfo}>Sign up email: {this.props.email}</div>
           </div>
-          <Button onClick={() => {
-            fakeBookRequest.delete('/logout').catch(error => console.error(error))
-          }}>logout</Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className={this.props.classes.logoutButton}
+            onClick={() => {
+              fakeBookRequest.delete('/logout').catch(error => console.error(error))}
+          }>
+            logout
+          </Button>
         </div>
     )
   }
