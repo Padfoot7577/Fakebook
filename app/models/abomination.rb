@@ -24,10 +24,10 @@ class Abomination < ActiveRecord::Base
 
   def for_api
     {
-        :id => id,
-        :name => name,
-        :description => description,
-        :url => url,
+      :id => id,
+      :name => name,
+      :description => description,
+      :url => url,
     }
   end
 end

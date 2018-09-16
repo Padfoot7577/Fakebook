@@ -35,7 +35,9 @@ class User < ActiveRecord::Base
   end
 
   def get_comrades
-    abominations.map(&users).flatten
+    abominations.map { |a|
+      a.users.to_a
+    }.flatten
   end
 
   def for_api_short
@@ -49,8 +51,11 @@ class User < ActiveRecord::Base
 
   def for_api
     json_hash = for_api_short
-    json_hash[:abominations] = abominations.map(&for_api)
+    json_hash[:abominations] = abominations.map { |a|
+      a.for_api
+    }
     json_hash[:comrades] = get_comrades.map(&for_api_short)
+    json_hash
   end
 
   private
