@@ -29,7 +29,7 @@ const styles = {
   searchBar: {
     position: "fixed",
     top: 22,
-    left: '55%'
+    left: '60%'
   },
   search: {
     position: 'relative',
@@ -66,6 +66,11 @@ const styles = {
 class GreetUser extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {searchedString: ""}
+  };
+
+  setSearchString = (event) => {
+    this.setState ({searchedString: event.target.value});
   };
 
   render () {
@@ -77,6 +82,7 @@ class GreetUser extends React.Component {
             <SearchIcon />
           </div>
           <Input
+            onChange={this.setSearchString}
             placeholder="Search…"
             disableUnderline
             classes={{
@@ -89,7 +95,9 @@ class GreetUser extends React.Component {
         <div className={this.props.classes.body}>
           <div className={this.props.classes.subtitleLine}>Things that you might hate</div>
           <div>
-            {this.props.user.hateObjects.map((hateObject) => (
+            {this.props.user.hateObjects
+              .filter(hateObject => containsSequence(hateObject.name, this.state.searchedString))
+              .map((hateObject) => (
               <Card key={hateObject.id} className={this.props.classes.card}>
               <div className={this.props.classes.cardContent}>{hateObject.name}
               </div></Card>))}
@@ -100,4 +108,7 @@ class GreetUser extends React.Component {
   }
 }
 
+const containsSequence = (checkString, searchSequence) => (checkString.indexOf(searchSequence) !== -1);
+
 export default withStyles(styles)(GreetUser);
+
