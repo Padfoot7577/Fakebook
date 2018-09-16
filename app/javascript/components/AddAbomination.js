@@ -8,8 +8,7 @@ const styles = {
     marginLeft: 100,
     marginRight: 100
     }
-  }
-};
+  };
 
 class AddAbominationForm extends React.Component {
   constructor(props) {
