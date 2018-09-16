@@ -52,6 +52,10 @@ input, textarea, select, .uneditable-input {
   @include  box_sizing;
 }
 
+input {
+  font-size: 16pt;
+}
+
 .signupText {
   font-size: 18pt;
   font-family: "Helvetica Neue"
