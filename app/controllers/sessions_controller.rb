@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def new
+    redirect_to '/' if logged_in?
   end
 
   def create
@@ -14,5 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out
+    render :json => ''
   end
 end

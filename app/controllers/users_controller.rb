@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def new
+    if logged_in?
+      return redirect_to '/'
+    end
     @user = User.new
   end
 
@@ -15,6 +20,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if !logged_in?
+      return redirect_to '/'
+    end
     @user = User.find(params[:id])
   end
 end
