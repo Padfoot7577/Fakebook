@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   before_save :format_email
 
-  has_many :animosities #, :class_name => 'Animosity', :foreign_key => :user_id
+  has_many :animosities
   has_many :abominations, :through => :animosities
 
   def get_gravatar_link
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def get_comrades
-    abominations.map(&:users).flatten.select { |u| u.id != id }
+    abominations.map(&:users).flatten.select { |u| u.id != id }.uniq { |u| u.id }
   end
 
   def for_api_short
