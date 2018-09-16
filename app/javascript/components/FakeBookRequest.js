@@ -24,4 +24,20 @@ const fakeBookRequest = axios.create({
   ],
 });
 
+export const fakeBookRequest2 = axios.create({
+  headers: {
+    Accept: 'text/html',
+    'Content-Type': 'text/html',
+  },
+  transformRequest: [
+    function(data) {
+      let { token, param } = getCSRFTokenFromPage();
+      if (token && param) {
+        data = Object.assign({}, data, { [param]: token });
+      }
+      return JSON.stringify(data);
+    },
+  ],
+});
+
 export default fakeBookRequest;

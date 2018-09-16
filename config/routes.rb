@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'abominations/new'
-  get 'users/new'
   root 'home#index'
 
   get 'home/index' => 'home#index'
