@@ -19,11 +19,16 @@ const styles = {
 class AddAbominationForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: this.props.defaultValue}
+    this.state = {
+      name: this.props.defaultValue,
+      description: ""
+    }
   };
 
   submitAbominationInfo = () => {
-    fakeBookRequest.post('/abominations',{'user_id':this.props.userID ,'name': this.state.name})
+    fakeBookRequest.post('/abominations',{'user_id':this.props.userID ,
+                                          'name': this.state.name,
+                                          'description': this.state.description})
       .then((values) => {
         console.log(values);
         this.props.updateFunc(values.data.abomination)
@@ -34,6 +39,10 @@ class AddAbominationForm extends React.Component {
 
   updateName = (event) => {
     this.setState({name: event.target.value})
+  };
+
+  updateDescription = (event) => {
+    this.setState({description: event.target.value})
   };
 
   render () {
@@ -58,6 +67,16 @@ class AddAbominationForm extends React.Component {
               value = {this.state.name}
               defaultValue={this.props.defaultValue}
               onChange={this.updateName}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Why do you hate it?"
+              type="textarea"
+              value = {this.state.description}
+              onChange={this.updateDescription}
               fullWidth
             />
           </DialogContent>
