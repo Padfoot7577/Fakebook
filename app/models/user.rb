@@ -26,24 +26,41 @@ class User < ActiveRecord::Base
 
   before_save :format_email
 
-  has_many :animosities
+  has_many :animosities #, :class_name => 'Animosity', :foreign_key => :user_id
   has_many :abominations, :through => :animosities
-
-  def format_email
-    self.email = email.downcase
-  end
 
   def get_gravatar_link
     gravatar_id = Digest::MD5::hexdigest(self.email)
     "https://secure.gravatar.com/avatar/#{gravatar_id}"
   end
 
-  def for_api
+  def get_comrades
+    abominations.map { |a|
+      a.users.to_a
+    }.flatten
+  end
+
+  def for_api_short
     {
       :id => id,
       :email => email,
       :name => name,
       :gravatar_link => get_gravatar_link,
     }
+  end
+
+  def for_api
+    json_hash = for_api_short
+    json_hash[:abominations] = abominations.map { |a|
+      a.for_api
+    }
+    json_hash[:comrades] = get_comrades.map(&for_api_short)
+    json_hash
+  end
+
+  private
+
+  def format_email
+    self.email = email.downcase
   end
 end
