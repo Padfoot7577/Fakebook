@@ -1,14 +1,14 @@
-<%= react_component 'GreetUser',
-  user: {
-    id: "1",
-    name:"Yunyi Zhu",
-    hateObjects: [
-      {id: "1", name: "mushroom"},
-      {id: "2", name: "fruit"},
-      {id: "3", name: "apple"},
-      {id: "4", name: "apple"},
-      {id: "5", name: "apple"},
-      {id: "6", name: "apple"}
-    ]
-  }
+<%= react_component 'GreetUser', {:user => current_user, :all_abominations => Abomination.list_all}
+  # user: {
+  #   id: "1",
+  #   name:"Yunyi Zhu",
+  #   hateObjects: [
+  #     {id: "1", name: "mushroom"},
+  #     {id: "2", name: "fruit"},
+  #     {id: "3", name: "apple"},
+  #     {id: "4", name: "apple"},
+  #     {id: "5", name: "apple"},
+  #     {id: "6", name: "apple"}
+  #   ]
+  # }
 %>

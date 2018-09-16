@@ -30,4 +30,8 @@ class Abomination < ActiveRecord::Base
       :url => url,
     }
   end
+
+  def self.list_all
+    Abomination.all.to_a.map { |a| a.for_api }
+  end
 end
