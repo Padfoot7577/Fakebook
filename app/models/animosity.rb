@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: marketing_tagged_content_assignments
+# Table name: animosity
 #
 #  id                             :integer          not null, primary key
 #  user_id                        :integer          not null

@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   before_save :format_email
 
-  has_many :animosities
+  has_many :animosities #, :class_name => 'Animosity', :foreign_key => :user_id
   has_many :abominations, :through => :animosities
 
   def get_gravatar_link
@@ -49,8 +49,8 @@ class User < ActiveRecord::Base
 
   def for_api
     json_hash = for_api_short
-    jason_hash[:abominations] = abominations.map(&for_api)
-    jason_hash[:comrades] = get_comrades.map(&for_api_short)
+    json_hash[:abominations] = abominations.map(&for_api)
+    json_hash[:comrades] = get_comrades.map(&for_api_short)
   end
 
   private
