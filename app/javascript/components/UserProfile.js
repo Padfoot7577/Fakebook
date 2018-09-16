@@ -1,8 +1,7 @@
 import React from "react";
-import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
-import axios from 'axios';
 import Button from '@material-ui/core/Button';
+import fakeBookRequest from 'components/FakeBookRequest';
 
 const styles = {
   body: {
@@ -49,7 +48,9 @@ class UserProfile extends React.Component {
             <div className={this.props.classes.secondaryInfo}>User id:  {this.props.id} </div>
             <div className={this.props.classes.secondaryInfo}>Sign up email: {this.props.email}</div>
           </div>
-          <Button onClick={() => {axios.delete('/logout')}}>logout</Button>
+          <Button onClick={() => {
+            fakeBookRequest.delete('/logout').catch(error => console.error(error))
+          }}>logout</Button>
         </div>
     )
   }
