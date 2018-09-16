@@ -19,7 +19,7 @@ class Abomination < ActiveRecord::Base
 
   validates :name, length: { maximum: 255 }, uniqueness: { case_sensitive: true }
 
-  has_many :animosities #, :class_name => 'Animosity', :foreign_key => :abomination_id
+  has_many :animosities
   has_many :users, :through => :animosities
 
   def for_api
@@ -29,6 +29,18 @@ class Abomination < ActiveRecord::Base
       :description => description,
       :url => url,
     }
+  end
+
+  def antagonize(user)
+    current_haters = Hash[users.map { |u| [u.id, u] }]
+    current_haters[user.id] = user
+    self.update!(:users => current_haters.values)
+  end
+
+  def unantagonize(user)
+    current_haters = Hash[users.map { |u| [u.id, u] }]
+    current_haters.delete(user.id)
+    self.update!(:users => current_haters.values)
   end
 
   def self.list_all

@@ -58,10 +58,6 @@ class User < ActiveRecord::Base
     json_hash
   end
 
-  def hate(abomination)
-
-  end
-
   private
 
   def format_email
