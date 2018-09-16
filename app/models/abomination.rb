@@ -44,6 +44,6 @@ class Abomination < ActiveRecord::Base
   end
 
   def self.list_all
-    Abomination.all.to_a.map { |a| a.for_api }
+    Abomination.all.map(&:for_api)
   end
 end

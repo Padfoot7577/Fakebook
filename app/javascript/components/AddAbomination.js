@@ -13,13 +13,22 @@ const styles = {
   body: {
     marginLeft: 100,
     marginRight: 100
-    }
+    },
+  subtitleLine: {
+    margin: 10,
+    fontFamily: "Helvetica",
+    fontSize: 24,
+    color: "#605f45"
+  }
   };
 
 class AddAbominationForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: this.props.defaultValue}
+    this.state = {
+      name: this.props.defaultValue,
+      description: ""
+    }
   };
 
   submitAbominationInfo = () => {
@@ -32,7 +41,6 @@ class AddAbominationForm extends React.Component {
             this.props.callBack(res2.data);
           });
         }
-        // this.props.updateFunc(values.data.abomination)
       })
       .catch((error) => console.error(error));
     this.props.toggleOpen();
@@ -40,6 +48,10 @@ class AddAbominationForm extends React.Component {
 
   updateName = (event) => {
     this.setState({name: event.target.value})
+  };
+
+  updateDescription = (event) => {
+    this.setState({description: event.target.value})
   };
 
   render () {
@@ -64,6 +76,16 @@ class AddAbominationForm extends React.Component {
               value = {this.state.name}
               defaultValue={this.props.defaultValue}
               onChange={this.updateName}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Why do you hate it?"
+              type="textarea"
+              value = {this.state.description}
+              onChange={this.updateDescription}
               fullWidth
             />
           </DialogContent>
