@@ -13,7 +13,13 @@ const styles = {
   body: {
     marginLeft: 100,
     marginRight: 100
-    }
+    },
+  subtitleLine: {
+    margin: 10,
+    fontFamily: "Helvetica",
+    fontSize: 24,
+    color: "#605f45"
+  }
   };
 
 class AddAbominationForm extends React.Component {
