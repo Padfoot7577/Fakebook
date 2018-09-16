@@ -6,16 +6,13 @@ import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import SelfDefinedCard from "./Card";
 
 const styles = {
   body: {
     marginTop: 40,
     marginLeft: 100,
     marginRight: 100
-  },
-  cardContent: {
-    margin: 20,
-    fontFamily: "Helvetica",
   },
   card: {
     display: "inline-block",
@@ -109,9 +106,9 @@ class GreetUser extends React.Component {
             {this.props.user.hateObjects
               .filter(hateObject => containsSequence(hateObject.name, this.state.searchedString))
               .map((hateObject) => (
-              <Card key={hateObject.id} className={this.props.classes.card}>
-                <div className={this.props.classes.cardContent}>{hateObject.name}</div>
-              </Card>))}
+                  <SelfDefinedCard key={hateObject.id} name={hateObject.name}/>
+              ))
+            }
 
             {
               this.state.searchedString && <Card className={this.props.classes.card}>
