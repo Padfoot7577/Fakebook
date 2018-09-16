@@ -12,7 +12,6 @@
       <div> <%= f.password_field :password, class: 'form-control' %> </div>
 
       <div> <%= f.submit "Log in", class: "btn btn-primary" %> </div>
-      <div class="alert"> <%= flash.now[:danger] %> </div>
     <% end %>
 
     <p class = 'signupInvite'>New user? <%= link_to "Sign up now!", signup_path %></p>
