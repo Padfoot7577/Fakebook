@@ -28,6 +28,11 @@ p {
   font-weight: bold;
 }
 
+.stmt {
+  color: grey;
+  font-size: 8pt
+}
+
 @mixin box_sizing {
   -moz-box-sizing:     border-box;
   -webkit-box-sizing:  border-box;
