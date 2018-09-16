@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   resources :abominations
+  post 'abominations' => 'abominations/create'
 end
