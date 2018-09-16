@@ -28,7 +28,7 @@ class SelfDefinedCard extends React.Component {
 
   render() {
     return (
-      <a href={"/abominations/"+this.props.id}>
+      <a href={"/" + this.props.type + "/" + this.props.id}>
       <Card className={this.props.classes.card} key={this.props.id}>
         <img className={this.props.classes.cardImage}
              src={this.props.url} />

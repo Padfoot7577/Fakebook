@@ -2,7 +2,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import fakebookRequest from 'components/FakebookRequest';
-import SelfDefinedCard from "./Card";
+import SelfDefinedCard from "components/Card";
 
 const styles = {
   body: {
@@ -74,11 +74,13 @@ class UserProfile extends React.Component {
           <div className={this.props.classes.subtitleLine}>Your Abominations</div>
           {this.props.abominations
             .map((abomination) => (abomination &&
-              <SelfDefinedCard key={abomination.id}
-                               userID={this.props.id}
-                               id={abomination.id}
-                               name={abomination.name}
-                               url={abomination.url}
+              <SelfDefinedCard
+                key={abomination.id}
+                type="abominations"
+                userID={this.props.id}
+                id={abomination.id}
+                name={abomination.name}
+                url={abomination.url}
               />
             ))
           }
@@ -88,10 +90,11 @@ class UserProfile extends React.Component {
           {this.props.comrades
             .map((comrade) => (comrade &&
                 <SelfDefinedCard key={comrade.id}
-                                             userID={this.props.id}
-                                             id={comrade.id}
-                                             name={comrade.name}
-                                             url={comrade.gravatar_link}
+                                 type="users"
+                                 userID={this.props.id}
+                                 id={comrade.id}
+                                 name={comrade.name}
+                                 url={comrade.gravatar_link}
                 />
 
             ))

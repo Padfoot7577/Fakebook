@@ -132,7 +132,7 @@ class GreetUser extends React.Component {
               .filter(abomination => containsSequence(abomination.name, this.state.searchedString))
               .map((abomination) => (
                   <SelfDefinedCard key={abomination.id}
-                                   userID={this.props.user.id}
+                                   userID={!!this.props.user && this.props.user.id}
                                    id={abomination.id}
                                    name={abomination.name}
                                    url={abomination.url}
