@@ -75,14 +75,23 @@ const styles = {
 class GreetUser extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
-    this.state = {searchedString: "",
-      creatingNew: false
+    console.log(props)
+    this.state = {
+      searchedString: "",
+      creatingNew: false,
+      abominationList: this.props.all_abominations
     };
   };
 
   setSearchString = (event) => {
     this.setState ({searchedString: event.target.value});
+  };
+
+  addNewAbominationUpdate = (newInfo) => {
+    this.setState (({abominationList}) => {
+      abominationList.unshift(newInfo);
+      return {abominationList:abominationList, searchedString: ""}
+    })
   };
 
   toggleCreatingNew = () => {
@@ -111,14 +120,15 @@ class GreetUser extends React.Component {
         <div className={this.props.classes.body}>
           <div className={this.props.classes.subtitleLine}>Things that you might hate</div>
           <div>
-            {this.props.all_abominations
+            {this.state.abominationList
               .filter(abomination => containsSequence(abomination.name, this.state.searchedString))
               .map((abomination) => (
                   <SelfDefinedCard key={abomination.id}
                                    userID={this.props.user.id}
                                    id={abomination.id}
                                    name={abomination.name}
-                                   url={abomination.url}/>
+                                   url={abomination.url}
+                  />
               ))
             }
 
@@ -139,6 +149,7 @@ class GreetUser extends React.Component {
         {
           this.state.creatingNew && <AddAbominationForm toggleOpen={this.toggleCreatingNew}
                                                         defaultValue={this.state.searchedString}
+                                                        updateFunc={this.addNewAbominationUpdate}
           />
         }
 

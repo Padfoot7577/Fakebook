@@ -24,6 +24,11 @@ class AddAbominationForm extends React.Component {
 
   submitAbominationInfo = () => {
     fakeBookRequest.post('/abominations',{'user_id':this.props.userID ,'name': this.state.name})
+      .then((values) => {
+        console.log(values);
+        this.props.updateFunc(values.data.abomination)
+      })
+      .catch((error) => console.error(error));
     this.props.toggleOpen();
   };
 
