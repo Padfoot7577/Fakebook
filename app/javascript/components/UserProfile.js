@@ -5,6 +5,7 @@ import fakeBookRequest from 'components/FakeBookRequest';
 
 const styles = {
   body: {
+    marginTop: 60,
     marginLeft: 100,
     marginRight: 100
   },

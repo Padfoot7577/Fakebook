@@ -43,10 +43,14 @@ class Header extends React.Component {
 
 const styles = {
   head: {
+    position: "fixed",
     backgroundColor: "#3B5998",
+    left: 0,
+    top: 0,
     border: 0,
     margin: 0,
     padding: 0,
+    width: "100vw",
     verticalAlign: "top",
   },
   headTitle: {

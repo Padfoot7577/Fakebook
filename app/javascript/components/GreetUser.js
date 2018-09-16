@@ -9,7 +9,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 const styles = {
   body: {
-    marginTop: 30,
+    marginTop: 40,
     marginLeft: 100,
     marginRight: 100
   },
@@ -34,7 +34,7 @@ const styles = {
   searchBar: {
     position: "fixed",
     top: 22,
-    left: '60%'
+    left: "60vw"
   },
   search: {
     position: 'relative',
@@ -45,6 +45,7 @@ const styles = {
     },
     marginLeft: 0,
     width: '100%',
+    height: 30
   },
   inputRoot: {
     color: 'inherit',
@@ -64,7 +65,8 @@ const styles = {
     paddingRight: 5,
     paddingBottom: 5,
     paddingLeft: 50,
-    width: '100%'
+    width: '100%',
+    height: 30
   },
   addButton: {
     background:'#e0e2e5',
@@ -110,11 +112,15 @@ class GreetUser extends React.Component {
               <Card key={hateObject.id} className={this.props.classes.card}>
                 <div className={this.props.classes.cardContent}>{hateObject.name}</div>
               </Card>))}
-            <Card className={this.props.classes.card}>
-              <Button variant="fab" color="secondary" aria-label="Add" className={this.props.classes.addButton}>
-                <AddIcon />
-              </Button>
-            </Card>
+
+            {
+              this.state.searchedString && <Card className={this.props.classes.card}>
+                <Button variant="fab" color="secondary" aria-label="Add" className={this.props.classes.addButton}>
+                  <AddIcon />
+                </Button>
+              </Card>
+            }
+
           </div>
 
         </div>
