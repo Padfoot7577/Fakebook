@@ -8,7 +8,7 @@ export const getCSRFTokenFromPage = () => {
   return { token, param };
 };
 
-const fakeBookRequest = axios.create({
+const fakebookRequest = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const fakeBookRequest = axios.create({
   ],
 });
 
-export const fakeBookRequest2 = axios.create({
+export const fakebookRequest2 = axios.create({
   headers: {
     Accept: 'text/html',
     'Content-Type': 'text/html',
@@ -40,4 +40,4 @@ export const fakeBookRequest2 = axios.create({
   ],
 });
 
-export default fakeBookRequest;
+export default fakebookRequest;

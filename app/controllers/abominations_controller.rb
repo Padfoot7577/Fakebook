@@ -4,6 +4,7 @@ class AbominationsController < ApplicationController
     if @abomination.save
       flash[:success] = "Haters gotta hate."
       render :json => {:error => nil, :abomination => @abomination.for_api}
+
     else
       render :json => {:error => 'Abomination names must be unique'}
     end
@@ -11,5 +12,9 @@ class AbominationsController < ApplicationController
 
   def show
     @abomination = Abomination.find(params[:id])
+  end
+
+  def list_all
+    render :json => Abomination.list_all
   end
 end

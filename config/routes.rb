@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  get 'abominations/list_all' => 'abominations#list_all'
   resources :abominations
-  post 'abominations' => 'abominations/create'
 end

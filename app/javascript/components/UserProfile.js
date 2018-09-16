@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import fakeBookRequest from 'components/FakeBookRequest';
+import fakebookRequest from 'components/FakebookRequest';
 
 const styles = {
   body: {
@@ -58,7 +58,7 @@ class UserProfile extends React.Component {
             color="primary"
             className={this.props.classes.logoutButton}
             onClick={() => {
-              fakeBookRequest.delete('/logout').catch(error => console.error(error))}
+              fakebookRequest.delete('/logout').catch(error => console.error(error))}
           }>
             logout
           </Button>

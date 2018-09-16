@@ -1,7 +1,5 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import fakeBookRequest from 'components/FakeBookRequest';
 
 const styles = {
   body: {
@@ -44,7 +42,7 @@ class UserProfile extends React.Component {
       <div className={this.props.classes.body}>
         <img className={this.props.classes.profileImage} src={this.props.url} />
         <div className={this.props.classes.basicInfo}>
-          <div className={this.props.classes.name}>{this.props.name} </div>
+          <div className={this.props.classes.name}>{this.props.name}</div>
           <div className={this.props.classes.secondaryInfo}>{this.props.description}</div>
         </div>
       </div>

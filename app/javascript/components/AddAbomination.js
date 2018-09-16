@@ -1,6 +1,6 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
-import fakeBookRequest from 'components/FakeBookRequest';
+import fakebookRequest from 'components/FakebookRequest';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,6 +19,27 @@ const styles = {
 class AddAbominationForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {name: this.props.defaultValue}
+  };
+
+  submitAbominationInfo = () => {
+    fakebookRequest.post('/abominations', {'user_id':this.props.userID ,'name': this.state.name})
+      .then((res1) => {
+        console.log(res1);
+        if (!res1.data.error) {
+          fakebookRequest.get('/abominations/list_all').then((res2) => {
+            console.log('res2');
+            this.props.callBack(res2.data);
+          });
+        }
+        // this.props.updateFunc(values.data.abomination)
+      })
+      .catch((error) => console.error(error));
+    this.props.toggleOpen();
+  };
+
+  updateName = (event) => {
+    this.setState({name: event.target.value})
   };
 
   render () {
@@ -40,7 +61,9 @@ class AddAbominationForm extends React.Component {
               id="name"
               label="Name"
               type="name"
+              value = {this.state.name}
               defaultValue={this.props.defaultValue}
+              onChange={this.updateName}
               fullWidth
             />
           </DialogContent>
@@ -48,7 +71,7 @@ class AddAbominationForm extends React.Component {
             <Button onClick={this.props.toggleOpen} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.props.toggleOpen} color="primary">
+            <Button onClick={this.submitAbominationInfo} color="primary">
               Create
             </Button>
           </DialogActions>

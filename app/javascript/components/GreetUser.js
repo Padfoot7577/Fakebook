@@ -6,12 +6,12 @@ import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import SelfDefinedCard from "./Card";
-import AddAbominationForm from "./AddAbomination";
+import SelfDefinedCard from "components/Card";
+import AddAbominationForm from "components/AddAbomination";
 
 const styles = {
   body: {
-    marginTop: 40,
+    marginTop: 100,
     marginLeft: 100,
     marginRight: 100
   },
@@ -80,20 +80,26 @@ class GreetUser extends React.Component {
       searchedString: "",
       creatingNew: false,
       all_abominations: this.props.all_abominations,
+
     };
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.all_abominations !== this.state.all_abominations) {
-      this.setState({
-        all_abominations: nextProps.all_abominations ,
-        searchedString: "",
-      });
-    }
-  }
-
   setSearchString = (event) => {
     this.setState ({searchedString: event.target.value});
+  };
+
+  addNewAbominationUpdate = (newInfo) => {
+    this.setState (({abominationList}) => {
+      abominationList.unshift(newInfo);
+      return {abominationList:abominationList, searchedString: ""}
+    })
+  };
+
+  refreshAbominations = (new_abominations) => {
+    this.setState({
+      all_abominations: new_abominations ,
+      searchedString: "",
+    });
   };
 
   toggleCreatingNew = () => {
@@ -126,9 +132,11 @@ class GreetUser extends React.Component {
               .filter(abomination => containsSequence(abomination.name, this.state.searchedString))
               .map((abomination) => (
                   <SelfDefinedCard key={abomination.id}
+                                   userID={this.props.user.id}
                                    id={abomination.id}
                                    name={abomination.name}
-                                   url={abomination.url}/>
+                                   url={abomination.url}
+                  />
               ))
             }
 
@@ -149,6 +157,7 @@ class GreetUser extends React.Component {
         {
           this.state.creatingNew && <AddAbominationForm toggleOpen={this.toggleCreatingNew}
                                                         defaultValue={this.state.searchedString}
+                                                        callBack={this.refreshAbominations}
           />
         }
 
@@ -160,4 +169,3 @@ class GreetUser extends React.Component {
 const containsSequence = (checkString, searchSequence) => (checkString.indexOf(searchSequence) !== -1);
 
 export default withStyles(styles)(GreetUser);
-
