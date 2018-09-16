@@ -11,7 +11,7 @@ import AddAbominationForm from "./AddAbomination";
 
 const styles = {
   body: {
-    marginTop: 40,
+    marginTop: 100,
     marginLeft: 100,
     marginRight: 100
   },
@@ -115,6 +115,7 @@ class GreetUser extends React.Component {
               .filter(abomination => containsSequence(abomination.name, this.state.searchedString))
               .map((abomination) => (
                   <SelfDefinedCard key={abomination.id}
+                                   userID={this.props.user.id}
                                    id={abomination.id}
                                    name={abomination.name}
                                    url={abomination.url}/>

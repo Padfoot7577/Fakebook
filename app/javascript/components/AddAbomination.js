@@ -19,6 +19,16 @@ const styles = {
 class AddAbominationForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {name: this.props.defaultValue}
+  };
+
+  submitAbominationInfo = () => {
+    fakeBookRequest.post('/abominations',{'user_id':this.props.userID ,'name': this.state.name})
+    this.props.toggleOpen();
+  };
+
+  updateName = (event) => {
+    this.setState({name: event.target.value})
   };
 
   render () {
@@ -40,7 +50,9 @@ class AddAbominationForm extends React.Component {
               id="name"
               label="Name"
               type="name"
+              value = {this.state.name}
               defaultValue={this.props.defaultValue}
+              onChange={this.updateName}
               fullWidth
             />
           </DialogContent>
@@ -48,7 +60,7 @@ class AddAbominationForm extends React.Component {
             <Button onClick={this.props.toggleOpen} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.props.toggleOpen} color="primary">
+            <Button onClick={this.submitAbominationInfo} color="primary">
               Create
             </Button>
           </DialogActions>
