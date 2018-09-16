@@ -15,6 +15,10 @@ const styles = {
     margin: 20,
     fontFamily: "Helvetica",
   },
+  cardImage: {
+    width: 240,
+    height: 240
+  }
 };
 
 class SelfDefinedCard extends React.Component {
@@ -25,6 +29,8 @@ class SelfDefinedCard extends React.Component {
   render() {
     return (
       <Card className={this.props.classes.card} key={this.props.key}>
+        <img className={this.props.classes.cardImage}
+             src="https://i.kym-cdn.com/entries/icons/original/000/002/232/bullet_cat.jpg" />
         <div className={this.props.classes.cardContent}>{this.props.name}</div>
       </Card>
     )
