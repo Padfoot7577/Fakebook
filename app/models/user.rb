@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
 
   before_save :format_email
 
+  has_many :animosities
+  has_many :abominations, :through => :animosities
+
   def format_email
     self.email = email.downcase
   end

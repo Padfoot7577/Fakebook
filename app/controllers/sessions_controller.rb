@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to '/'
+    render :json => ''
   end
 end
