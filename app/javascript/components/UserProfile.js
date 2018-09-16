@@ -67,7 +67,6 @@ class UserProfile extends React.Component {
             ))
           }
           <div className={this.props.classes.subtitleLine}>Your Friends</div>
-          {console.log(this.props.comrades)}
           {this.props.comrades
             .map((comrade) => (comrade &&
                 <SelfDefinedCard key={comrade.id}
