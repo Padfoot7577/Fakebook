@@ -7,6 +7,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import SelfDefinedCard from "./Card";
+import AddAbominationForm from "./AddAbomination";
 
 const styles = {
   body: {
@@ -74,32 +75,38 @@ const styles = {
 class GreetUser extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
-    this.state = {searchedString: ""}
+    console.log(props);
+    this.state = {searchedString: "",
+      creatingNew: false
+    };
   };
 
   setSearchString = (event) => {
     this.setState ({searchedString: event.target.value});
   };
 
+  toggleCreatingNew = () => {
+    this.setState(({creatingNew}) => ({creatingNew: !creatingNew}) );
+  }
+
   render () {
     return (
       <div>
         <div className={this.props.classes.searchBar}>
-        <div className={this.props.classes.search}>
-          <div className={this.props.classes.searchIcon}>
-            <SearchIcon />
+          <div className={this.props.classes.search}>
+            <div className={this.props.classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <Input
+              onChange={this.setSearchString}
+              placeholder="Search…"
+              disableUnderline
+              classes={{
+                root: this.props.classes.inputRoot,
+                input: this.props.classes.inputInput,
+              }}
+            />
           </div>
-          <Input
-            onChange={this.setSearchString}
-            placeholder="Search…"
-            disableUnderline
-            classes={{
-              root: this.props.classes.inputRoot,
-              input: this.props.classes.inputInput,
-            }}
-          />
-        </div>
         </div>
         <div className={this.props.classes.body}>
           <div className={this.props.classes.subtitleLine}>Things that you might hate</div>
@@ -113,7 +120,10 @@ class GreetUser extends React.Component {
 
             {
               this.state.searchedString && <Card className={this.props.classes.card}>
-                <Button variant="fab" color="secondary" aria-label="Add" className={this.props.classes.addButton}>
+                <Button variant="fab" color="secondary" aria-label="Add"
+                        className={this.props.classes.addButton}
+                        onClick={this.toggleCreatingNew}
+                >
                   <AddIcon />
                 </Button>
               </Card>
@@ -122,6 +132,10 @@ class GreetUser extends React.Component {
           </div>
 
         </div>
+        {
+          this.state.creatingNew && <AddAbominationForm toggleOpen={this.toggleCreatingNew}/>
+        }
+
       </div>
     );
   }
