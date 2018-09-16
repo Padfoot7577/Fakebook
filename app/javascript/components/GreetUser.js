@@ -87,7 +87,7 @@ class GreetUser extends React.Component {
 
   toggleCreatingNew = () => {
     this.setState(({creatingNew}) => ({creatingNew: !creatingNew}) );
-  }
+  };
 
   render () {
     return (
