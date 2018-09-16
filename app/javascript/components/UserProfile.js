@@ -36,7 +36,14 @@ const styles = {
   logoutButton: {
     background: "#3B5998",
     display: "block",
-    margin: 30,
+    marginTop: 20,
+    marginLeft: 10
+  },
+  subtitleLine: {
+    margin: 10,
+    fontFamily: "Helvetica",
+    fontSize: 24,
+    color: "#605f45"
   }
 };
 
@@ -54,10 +61,19 @@ class UserProfile extends React.Component {
             <div className={this.props.classes.name}>{this.props.name} </div>
             <div className={this.props.classes.secondaryInfo}>User id:  {this.props.id} </div>
             <div className={this.props.classes.secondaryInfo}>Sign up email: {this.props.email}</div>
+            <Button
+                variant="contained"
+                color="primary"
+                className={this.props.classes.logoutButton}
+                onClick={() => {
+                  fakebookRequest.delete('/logout').catch(error => console.error(error))}
+                }>
+              logout
+            </Button>
           </div>
           <div className={this.props.classes.subtitleLine}>Your Abominations</div>
           {this.props.abominations
-            .map((abomination) => (
+            .map((abomination) => (abomination &&
               <SelfDefinedCard key={abomination.id}
                                userID={this.props.id}
                                id={abomination.id}
@@ -66,6 +82,8 @@ class UserProfile extends React.Component {
               />
             ))
           }
+          {!this.props.abominations.length &&
+            <p>Do you not hate anything?</p>}
           <div className={this.props.classes.subtitleLine}>Your Friends</div>
           {this.props.comrades
             .map((comrade) => (comrade &&
@@ -78,15 +96,8 @@ class UserProfile extends React.Component {
 
             ))
           }
-          <Button
-            variant="contained"
-            color="primary"
-            className={this.props.classes.logoutButton}
-            onClick={() => {
-              fakebookRequest.delete('/logout').catch(error => console.error(error))}
-          }>
-            logout
-          </Button>
+          {!this.props.comrades.length &&
+            <p>You do not have any friend yet. Hate something to obtain more sympathy. </p>}
         </div>
     )
   }

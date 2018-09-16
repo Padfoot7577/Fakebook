@@ -141,7 +141,7 @@ class GreetUser extends React.Component {
             }
 
             {
-              this.state.searchedString && <Card className={this.props.classes.card}>
+              <Card className={this.props.classes.card}>
                 <Button variant="fab" color="secondary" aria-label="Add"
                         className={this.props.classes.addButton}
                         onClick={this.toggleCreatingNew}
